@@ -37,8 +37,8 @@ public class BitcoinService {
         return repository.findByModifiedDate(modifiedDate);
     }
 
-    @Scheduled(fixedRate = 20000)
-    public void launch() throws Exception {
+    @Scheduled(fixedRate = 10000)
+    public void launch() {
         getAndSaveBitcoin();
     }
 

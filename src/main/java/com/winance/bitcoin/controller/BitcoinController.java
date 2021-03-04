@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collection;
 import java.util.Date;
 
 
@@ -27,21 +26,16 @@ public class BitcoinController {
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     @GetMapping("/by-timestamp")
-    public Bitcoin getByTimestamp(@RequestParam (value = "date" )
-                                      @DateTimeFormat(pattern = DATE_FORMAT) Date date) {
+    public Bitcoin getByTimestamp(@RequestParam(value = "date")
+                                  @DateTimeFormat(pattern = DATE_FORMAT) Date date) {
         return service.findByModifiedDate(date);
     }
 
-    @GetMapping("")
-    public Collection<Bitcoin> getAll(){
-        return repository.findAll();
-    }
-
     @GetMapping("/average-between-timestamps")
-    public Double getBetweenTimestamp(@RequestParam (value = "date1")
-                                           @DateTimeFormat(pattern = DATE_FORMAT) Date date1,
-                                       @RequestParam (value = "date2")
-                                       @DateTimeFormat(pattern = DATE_FORMAT) Date date2) {
+    public Double getBetweenTimestamp(@RequestParam(value = "date1")
+                                      @DateTimeFormat(pattern = DATE_FORMAT) Date date1,
+                                      @RequestParam(value = "date2")
+                                      @DateTimeFormat(pattern = DATE_FORMAT) Date date2) {
         return service.getAverage(date1, date2);
     }
 
